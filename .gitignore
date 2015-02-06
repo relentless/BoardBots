@@ -1,0 +1,64 @@
+## Ignore unwanted Visual Studio files.
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# random vs files
+*.vspscc
+*.vssscc
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+build/
+bld/
+[Bb]in/
+[Oo]bj/
+
+# Roslyn cache directories
+*.ide/
+
+# MSTest test Results
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+#NUNIT
+*.VisualState.xml
+TestResult.xml
+
+# Visual Studio profiler
+*.psess
+*.vsp
+*.vspx
+
+# TFS 2012 Local Workspace
+$tf/
+
+# ReSharper is a .NET coding add-in
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+
+# JustCode is a .NET coding addin-in
+.JustCode
+
+# TeamCity is a build add-in
+_TeamCity*
+
+# DotCover is a Code Coverage Tool
+*.dotCover
+
+# NCrunch
+_NCrunch_*
+.*crunch*.local.xml
+
+# MightyMoose
+*.mm.*
+AutoTest.Net/
