@@ -43,3 +43,34 @@ When playing a tournament, some stuff will happen:
     +-------------------------------------------------------------------+  
 
     [Press any key to continue..]
+
+## You will get a menu
+
+    Games Menu
+
+    1. Show Tournament results
+    2. Show Game results
+    3. Playback all games (random order)
+    4. Playback individial game
+    5. Exit BoardBots
+    
+## You can watch the games if you want
+
+    Game 1: RandomPlayer ('X') vs GrantsAwesomeFSharpBot ('O')
+
+    Move 6: GrantsAwesomeFSharpBot plays at [0,2]
+
+        0   1   2
+      +-----------+
+    0 ¦   ¦ X ¦ O ¦
+      +---+---+---¦
+    1 ¦ X ¦ O ¦   ¦
+      +---+---+---¦
+    2 ¦ O ¦ X ¦   ¦
+      +-----------+
+
+    ** GrantsAwesomeFSharpBot Wins!  **
+
+    [Press any key to continue...]
+    
+## Enjoy!
