@@ -14,22 +14,32 @@ When playing a tournament, some stuff will happen:
 
 ## The bots will load
 
-Players Loaded
+    Players Loaded
 
-BoardBots.RandomPlayer.RandomPlayer  
-GrantsAwesomeFSharpBot.GrantsAwesomeFSharpBot
+    BoardBots.RandomPlayer.RandomPlayer  
+    GrantsAwesomeFSharpBot.GrantsAwesomeFSharpBot
 
-[Press any key to continue..]
+    [Press any key to continue..]
 
 ## The tournament will run
 
-Tournament in Progress
+    Tournament in Progress
 
-Game 1: RandomPlayer vs GrantsAwesomeFSharpBot.. GrantsAwesomeFSharpBot Wins!  
-Game 2: GrantsAwesomeFSharpBot vs RandomPlayer.. GrantsAwesomeFSharpBot Wins!  
+    Game 1: RandomPlayer vs GrantsAwesomeFSharpBot.. GrantsAwesomeFSharpBot Wins!  
+    Game 2: GrantsAwesomeFSharpBot vs RandomPlayer.. GrantsAwesomeFSharpBot Wins!  
 
-[Press any key to see the results..]
+    [Press any key to see the results..]
 
 ## The results will be shown
 
+    Tournament Results
 
+    +-------------------------------------------------------------------+  
+    ¦ Player                     ¦ Played ¦ Won ¦ Drawn ¦ Lost ¦ Points ¦  
+    +----------------------------+--------+-----+-------+------+--------¦  
+    ¦ GrantsAwesomeFSharpBot     ¦      2 ¦   2 ¦     0 ¦    0 ¦      4 ¦  
+    +----------------------------+--------+-----+-------+------+--------¦  
+    ¦ RandomPlayer               ¦      2 ¦   0 ¦     0 ¦    2 ¦      2 ¦  
+    +-------------------------------------------------------------------+  
+
+    [Press any key to continue..]
