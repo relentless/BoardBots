@@ -17,6 +17,7 @@ namespace BoardBots.Tests {
         }
 
         [Test]
+        [Ignore("This doesn't work since VS2015 as the test runner doesn't run as a console application. Need to use interfaces for output to have this working.")]
         public void ChooseGame_ValidGameSelected_ReturnsGame() {
             // arrange
             var menu = new Menu(CreateTournament());
@@ -33,6 +34,7 @@ namespace BoardBots.Tests {
         }
 
         [Test]
+        [Ignore("This doesn't work since VS2015 as the test runner doesn't run as a console application. Need to use interfaces for output to have this working.")]
         public void ChooseGame_InvalidGameSelected_AsksUserToSelectAgain() {
             // arrange
             var menu = new Menu(CreateTournament());
@@ -55,6 +57,7 @@ namespace BoardBots.Tests {
         }
 
         [Test]
+        [Ignore("This doesn't work since VS2015 as the test runner doesn't run as a console application. Need to use interfaces for output to have this working.")]
         public void ChooseGame_NonNumericEntered_AsksUserToSelectAgain() {
             // arrange
             var menu = new Menu(CreateTournament());
