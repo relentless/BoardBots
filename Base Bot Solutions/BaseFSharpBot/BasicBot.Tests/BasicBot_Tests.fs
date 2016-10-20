@@ -28,11 +28,14 @@ let ``When centre is taken should play in a corner`` () =
 [<Test>]
 let ``Example of specifying the whole board`` () =
     let board = new FakeBoard()
+    
+    // NOTE: Rows & columns not where you wold expect
     board.Tokens = 
         [|
-            [| PlayerToken.Opponent; PlayerToken.None; PlayerToken.None  |]
-            [| PlayerToken.None; PlayerToken.None; PlayerToken.Me  |]
-            [| PlayerToken.None; PlayerToken.Me; PlayerToken.Opponent  |]
+                   // Row 0             Row 1              Row 2
+            [| PlayerToken.Opponent; PlayerToken.None; PlayerToken.None  |] // Column 0
+            [| PlayerToken.None; PlayerToken.None; PlayerToken.Me  |] // Column 1
+            [| PlayerToken.None; PlayerToken.Me; PlayerToken.Opponent  |] // Column 2
         |] |> ignore
 
     board |> testBot.TakeTurn |> shouldEqual (1,1)

@@ -45,12 +45,14 @@ namespace BasicBot.Tests
             BasicBot player = new BasicBot();
             FakeBoard partiallyFullBoard = new FakeBoard();
 
+            // NOTE: Rows & columns not where you would expect them to be.. 
+            
             partiallyFullBoard.Tokens =
                 new PlayerToken[,] {
-                    {PlayerToken.None,PlayerToken.Me,PlayerToken.Opponent},    // Row 0
-                    {PlayerToken.Opponent,PlayerToken.None,PlayerToken.Me},    // Row 1
-                    {PlayerToken.None,PlayerToken.Opponent,PlayerToken.None}}; // Row 2
-                    // Column 0         Column 1            Column 2
+                    {PlayerToken.None,PlayerToken.Me,PlayerToken.Opponent},    // Column 0
+                    {PlayerToken.Opponent,PlayerToken.None,PlayerToken.Me},    // Column 1
+                    {PlayerToken.None,PlayerToken.Opponent,PlayerToken.None}}; // Column 2
+                    //   Row 0             Row 1              Row 2
 
             // act
             var result = player.TakeTurn(partiallyFullBoard);
