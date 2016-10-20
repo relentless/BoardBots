@@ -14,13 +14,14 @@ namespace BasicBot.Tests
         {
             // arrange
             BasicBot player = new BasicBot();
+            FakeBoard emptyBoard = new FakeBoard();
 
             // act
-            var result = player.TakeTurn(new FakeBoard());
+            var positionPlayed = player.TakeTurn(emptyBoard);
 
             // assert
-            Assert.That(result.Column, Is.EqualTo(0));
-            Assert.That(result.Row, Is.EqualTo(0));
+            Assert.That(positionPlayed.Column, Is.EqualTo(0));
+            Assert.That(positionPlayed.Row, Is.EqualTo(0));
         }
 
         [Test]
@@ -29,14 +30,14 @@ namespace BasicBot.Tests
             // arrange
             BasicBot player = new BasicBot();
             FakeBoard partiallyFullBoard = new FakeBoard();
-            partiallyFullBoard.Tokens[0, 0] = PlayerToken.Opponent;
+            partiallyFullBoard.SetToken(0, 0, PlayerToken.Opponent);
 
             // act
-            var result = player.TakeTurn(partiallyFullBoard);
+            var positionPlayed = player.TakeTurn(partiallyFullBoard);
 
             // assert
-            Assert.That(result.Column, Is.EqualTo(0));
-            Assert.That(result.Row, Is.EqualTo(0));
+            Assert.That(positionPlayed.Column, Is.EqualTo(0));
+            Assert.That(positionPlayed.Row, Is.EqualTo(0));
         }
 
         [Test]
@@ -45,45 +46,52 @@ namespace BasicBot.Tests
             BasicBot player = new BasicBot();
             FakeBoard partiallyFullBoard = new FakeBoard();
 
-            // NOTE: Rows & columns not where you would expect them to be.. 
-            
-            partiallyFullBoard.Tokens =
+            partiallyFullBoard.SetBoard(
                 new PlayerToken[,] {
-                    {PlayerToken.None,PlayerToken.Me,PlayerToken.Opponent},    // Column 0
-                    {PlayerToken.Opponent,PlayerToken.None,PlayerToken.Me},    // Column 1
-                    {PlayerToken.None,PlayerToken.Opponent,PlayerToken.None}}; // Column 2
-                    //   Row 0             Row 1              Row 2
+                    {PlayerToken.Me,   PlayerToken.Me,       PlayerToken.None},       // Row 0,
+                    {PlayerToken.None, PlayerToken.None,     PlayerToken.None},       // Row 1,
+                    {PlayerToken.None, PlayerToken.Opponent, PlayerToken.Opponent}}); // Row 2
+                    //  Column 0,         Column 1,               Column 2
 
             // act
-            var result = player.TakeTurn(partiallyFullBoard);
+            var positionPlayed = player.TakeTurn(partiallyFullBoard);
 
             // assert
-            Assert.That(result.Column, Is.EqualTo(0));
-            Assert.That(result.Row, Is.EqualTo(0));
+            Assert.That(positionPlayed.Column, Is.EqualTo(0));
+            Assert.That(positionPlayed.Row, Is.EqualTo(0));
         }
 
         // PlayerBoard we can use for testing
-        internal class FakeBoard : IPlayerBoard
-        {
-            internal PlayerToken[,] Tokens = new PlayerToken[3, 3];
+        internal class FakeBoard : IPlayerBoard {
+            const int BOARD_SIZE = 3;
 
-            internal FakeBoard()
-            {
+            private PlayerToken[,] Tokens = new PlayerToken[BOARD_SIZE, BOARD_SIZE];
+
+            internal FakeBoard() {
                 InitialiseBoard();
             }
 
-            public PlayerToken TokenAt(BoardPosition position)
-            {
+            public PlayerToken TokenAt(BoardPosition position) {
                 return Tokens[position.Column, position.Row];
             }
 
+            internal void SetToken(int column, int row, PlayerToken token) {
+                Tokens[column, row] = token;
+            }
+
+            internal void SetBoard(PlayerToken[,] tokens) {
+                // tokens for this will be the 'wrong way round' (rows then columns)
+                for (int row = 0; row < BOARD_SIZE; row++) {
+                    for (int column = 0; column < BOARD_SIZE; column++) {
+                        Tokens[column, row] = tokens[row, column];
+                    }
+                }
+            }
+
             // Set empty fields to PlayerToken.None, which is what the real board will have (they will not be NULL).
-            private void InitialiseBoard()
-            {
-                for (int columns = 0; columns < 3; columns++)
-                {
-                    for (int rows = 0; rows < 3; rows++)
-                    {
+            private void InitialiseBoard() {
+                for (int columns = 0; columns < 3; columns++) {
+                    for (int rows = 0; rows < 3; rows++) {
                         Tokens[columns, rows] = PlayerToken.None;
                     }
                 }
